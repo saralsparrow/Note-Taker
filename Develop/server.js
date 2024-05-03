@@ -14,15 +14,20 @@ app.use(express.json());
 
 // Routes
 
-app.get('/api/notes', (req, res) => {
-    fs.readFile('./db/db.json', (err, data) => {
-        ///error logging
-        if (err) throw err;
-        let dbData = JSON.parse(data);
-        //Returns new database
-        res.json(dbData)
-    });   
-})
+app.get('/notes', (req, res) => {
+  // Send a simple response for now
+  res.sendFile(path.join(__dirname, './public/notes.html'));
+});
+
+// app.get('/notes', (req, res) => {
+//     fs.readFile('./db/db.json', (err, data) => {
+//         ///error logging
+//         if (err) throw err;
+//         let dbData = JSON.parse(data);
+//         //Returns new database
+//         res.json(dbData)
+//     });   
+// })
 
 // Start server
 
